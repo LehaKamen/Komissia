@@ -1,5 +1,23 @@
 package com.example.komissia.ui.screen
 
+<<<<<<< HEAD
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.komissia.ui.viewmodel.MainViewModel
+
+@Composable
+fun DetailScreen(
+    id: String,
+    viewModel: MainViewModel = hiltViewModel()
+) {
+
+    val story by viewModel.selectedStory.collectAsState()
+=======
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
@@ -60,11 +78,33 @@ fun DetailScreen(
     viewModel: MainViewModel = hiltViewModel()
 ) {
     val state by viewModel.detailState.collectAsStateWithLifecycle()
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af
 
     LaunchedEffect(id) {
         viewModel.loadStoryDetail(id)
     }
 
+<<<<<<< HEAD
+    if (story == null) {
+
+        Text("Loading...")
+
+    } else {
+
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+
+            Text("Title: ${story?.title}")
+
+            Text("Author: ${story?.author}")
+
+            Text("URL: ${story?.url}")
+
+        }
+    }
+}
+=======
     Scaffold(
         topBar = {
             TopAppBar(
@@ -291,3 +331,4 @@ private fun DetailContent(
         Spacer(Modifier.height(16.dp))
     }
 }
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af

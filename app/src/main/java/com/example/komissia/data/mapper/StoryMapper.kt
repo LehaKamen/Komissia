@@ -1,6 +1,18 @@
 package com.example.komissia.data.mapper
 
 import com.example.komissia.data.model.Story
+<<<<<<< HEAD
+import com.example.komissia.data.remote.StoryDto
+
+fun StoryDto.toStory(): Story {
+    return Story(
+        id = objectID,
+        title = title ?: "No title",
+        author = author,
+        url = url
+    )
+}
+=======
 import com.example.komissia.data.model.StoryDetail
 import com.example.komissia.data.remote.ItemDto
 import com.example.komissia.data.remote.StoryDto
@@ -23,3 +35,4 @@ fun ItemDto.toStoryDetail(): StoryDetail = StoryDetail(
     points = points,
     text = text
 )
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af

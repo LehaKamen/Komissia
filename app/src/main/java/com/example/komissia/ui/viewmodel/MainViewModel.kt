@@ -2,6 +2,16 @@ package com.example.komissia.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+<<<<<<< HEAD
+import com.example.komissia.data.repository.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+import com.example.komissia.data.remote.StoryDto
+import com.example.komissia.data.model.Story
+=======
 import com.example.komissia.data.model.Story
 import com.example.komissia.data.model.StoryDetail
 import com.example.komissia.data.repository.MainRepository
@@ -28,11 +38,57 @@ sealed interface DetailScreenState {
     data class Error(val message: String) : DetailScreenState
 }
 
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: MainRepository
 ) : ViewModel() {
 
+<<<<<<< HEAD
+    private val _stories = MutableStateFlow<List<Story>>(emptyList())
+    val stories: StateFlow<List<Story>> = _stories
+
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error
+
+    private val _selectedStory = MutableStateFlow<StoryDto?>(null)
+    val selectedStory: StateFlow<StoryDto?> = _selectedStory
+
+    fun loadStories() {
+
+        viewModelScope.launch {
+
+            val result = repository.loadStories()
+
+            result.fold(
+                onSuccess = {
+                    _stories.value = it
+                },
+                onFailure = {
+                    _error.value = it.message
+                }
+            )
+        }
+    }
+    fun loadStoryDetail(id: String) {
+
+        viewModelScope.launch {
+
+            val result = repository.loadItem(id)
+
+            result.fold(
+                onSuccess = {
+                    _selectedStory.value = it
+                },
+                onFailure = {
+                    _error.value = it.message
+                }
+            )
+
+        }
+    }
+}
+=======
     // три отдельных потока — собираем через combine в один стейт
     private val _stories = MutableStateFlow<List<Story>>(emptyList())
     private val _listError = MutableStateFlow<String?>(null)
@@ -87,3 +143,4 @@ class MainViewModel @Inject constructor(
         }
     }
 }
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af

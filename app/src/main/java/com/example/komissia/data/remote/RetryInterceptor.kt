@@ -4,6 +4,38 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
+<<<<<<< HEAD
+class RetryInterceptor(
+    private val maxRetries: Int = 3
+) : Interceptor {
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+
+        var request = chain.request()
+        var response: Response? = null
+        var tryCount = 0
+
+        while (tryCount < maxRetries) {
+            try {
+                response = chain.proceed(request)
+
+                if (response.isSuccessful) {
+                    return response
+                }
+
+            } catch (e: IOException) {
+                if (tryCount >= maxRetries - 1) {
+                    throw e
+                }
+            }
+
+            tryCount++
+        }
+
+        return response!!
+    }
+}
+=======
 private const val AUTO_RETRY_COUNT = 1
 private const val RETRY_DELAY_MS = 2000L
 
@@ -40,3 +72,4 @@ class RetryInterceptor : Interceptor {
         throw lastException ?: IOException("Запрос не удался после автоповтора")
     }
 }
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af

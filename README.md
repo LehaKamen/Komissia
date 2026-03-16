@@ -69,3 +69,4 @@ com.example.komissia/
 ### Ошибка + Retry
 
 ![Retry Screen](screenshots/Retry.png)
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af

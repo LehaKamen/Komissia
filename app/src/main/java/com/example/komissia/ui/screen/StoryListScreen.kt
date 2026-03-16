@@ -1,5 +1,21 @@
 package com.example.komissia.ui.screen
 
+<<<<<<< HEAD
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.komissia.ui.viewmodel.MainViewModel
+import androidx.navigation.NavController
+import androidx.compose.foundation.clickable
+import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.Column
+
+=======
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -64,11 +80,70 @@ private fun extractDomain(url: String?): String? {
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af
 @Composable
 fun StoryListScreen(
     navController: NavController,
     viewModel: MainViewModel = hiltViewModel()
 ) {
+<<<<<<< HEAD
+
+    val stories by viewModel.stories.collectAsState()
+    val error by viewModel.error.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadStories()
+    }
+
+    Column {
+
+        Text(
+            text = "Variant: HNALG-FRONT-MOD_D18_RETRY_POLICY",
+            modifier = Modifier.padding(8.dp)
+        )
+
+        when {
+
+            error != null -> {
+
+                Column {
+
+                    Text("Error: $error")
+
+                    Button(
+                        onClick = { viewModel.loadStories() }
+                    ) {
+                        Text("Retry")
+                    }
+
+                }
+
+            }
+
+            stories.isEmpty() -> {
+                Text("Loading...")
+            }
+
+            else -> {
+
+                LazyColumn {
+
+                    items(stories) { story ->
+
+                        Text(
+                            text = story.title ?: "No title",
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .clickable {
+                                    navController.navigate("detail/${story.id}")
+                                }
+                        )
+
+                    }
+
+                }
+
+=======
     val state by viewModel.listState.collectAsStateWithLifecycle()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
@@ -127,11 +202,14 @@ fun StoryListScreen(
                     onStoryClick = { navController.navigate("detail/${it.id}") },
                     contentPadding = padding
                 )
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af
             }
         }
     }
 }
 
+<<<<<<< HEAD
+=======
 @Composable
 private fun LoadingState(modifier: Modifier = Modifier) {
     Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -316,3 +394,4 @@ private fun StoryCard(
         }
     }
 }
+>>>>>>> 2d615af0fbb6b07834f9cfa811a32c2319e7c5af
