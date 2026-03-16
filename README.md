@@ -60,13 +60,12 @@ com.example.komissia/
 
 ### Список новостей
 
-*!\[List](screenshots/List.png)*
+![List Screen](screenshots/List.png)
 
 ### Детали статьи
 
-*!\[Detail](screenshots/Detail.png)*
+![Detail Screen](screenshots/Detail.png)
 
 ### Ошибка + Retry
 
-*!\[Retry](screenshots/Retry.png)*
-
+![Retry Screen](screenshots/Retry.png)
